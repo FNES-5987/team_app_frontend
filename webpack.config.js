@@ -23,6 +23,10 @@ module.exports = {
         test: /\.(gif|jpg|png|webp|svg|mp4)$/,
         type: "asset/resource",
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   output: {
@@ -44,5 +48,8 @@ module.exports = {
     historyApiFallback: true,
     static: "./dist",
     open: true,
+    proxy: {
+      '/api': 'http://localhost:8082',
+    },
   },
 };
